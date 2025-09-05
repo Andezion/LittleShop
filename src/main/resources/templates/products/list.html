@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>List of goods</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>List of goods</h1>
+
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+    <div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
+
+    <div sec:authorize="hasRole('ADMIN')" class="admin-controls">
+        <a th:href="@{/products/add}" class="button">Add new product</a>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>In Stock</th>
+                <th>Image</th>
+                <th sec:authorise="hasRole('ADMIN')">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${productPage.content}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.stockQuantity}"></td>
+                <td>
+                    <img th:if="${product.imageUrl}" th:src="${product.imageUrl}" alt="Product Image" class="product-image"/>
+                    <span th:unless="${product.imageUrl}">No image</span>
+                </td>
+                <td class="action-links" sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/products/{id}/edit(id=${product.id})}" class="link">Edit</a>
+                    <form th:action="@{/products/{id}/delete(id=${product.id})}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Are you sure you want to remove this item?');"
+                                class="delete-button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(productPage.content)}">
+                <td colspan="7">Goods not found.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination" th:if="${productPage.totalPages > 0}">
+        <a th:if="${currentPage > 0}" th:href="@{/products(page=${currentPage - 1}, size=${pageSize})}">« Previous</a>
+
+        <span th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}">
+            <a th:if="${currentPage != i}" th:href="@{/products(page=${i}, size=${pageSize})}" th:text="${i + 1}"></a>
+            <span th:if="${currentPage == i}" th:text="${i + 1}" class="current-page"></span>
+        </span>
+
+        <a th:if="${currentPage < productPage.totalPages - 1}" th:href="@{/products(page=${currentPage + 1}, size=${pageSize})}">Next »</a>
+    </div>
+
+    <div class="info-summary">
+        <p>Page <span th:text="${currentPage + 1}">1</span> of <span th:text="${productPage.totalPages}">1</span></p>
+        <p>Total goods: <span th:text="${productPage.totalElements}">0</span></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrator panel</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>Administrator panel</h1>
+        <p class="subtitle">Welcome, <strong><span sec:authentication="name"></span></strong>!</p>
+        <p>You can manage products, users and other sections of the shop.</p>
+    </header>
+
+    <nav class="admin-nav">
+        <ul>
+            <li><a th:href="@{/}">🏠 Main</a></li>
+            <li><a th:href="@{/products}">📦 Product management</a></li>
+            <li><a th:href="@{/admin/users}">👥 Users (in development)</a></li>
+            <li sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="button danger">Get out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <section>
+        <p class="info-summary">Control functionality will be added here.</p>
+    </section>
+</div>
+</body>
+</html>

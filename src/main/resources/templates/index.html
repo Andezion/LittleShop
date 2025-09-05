@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Leron!</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>Welcome to the <span class="brand">Leron</span>!</h1>
+        <p class="subtitle">Your one-stop online shop</p>
+    </header>
+
+    <main class="main">
+        <div class="auth-section" sec:authorize="!isAuthenticated()">
+            <p><a th:href="@{/login}" class="button">Sign in</a> or <a th:href="@{/register}" class="button outline">Sign up</a></p>
+        </div>
+
+        <div class="auth-section" sec:authorize="isAuthenticated()">
+            <p>Hi, <strong><span sec:authentication="name"></span></strong>!</p>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="button danger">Get out</button>
+            </form>
+            <p sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin/dashboard}" class="link">Administrator panel</a></p>
+            <p sec:authorize="hasRole('USER')"><a th:href="@{/user/profile}" class="link">My profile</a></p>
+        </div>
+
+        <hr>
+
+        <p class="nav-link">Visit us <a th:href="@{/products}" class="link">product page</a>.</p>
+    </main>
+</div>
+</body>
+</html>

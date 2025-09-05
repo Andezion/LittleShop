@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Entry</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container auth-container">
+    <h1>Entry</h1>
+
+    <div th:if="${param.registered}" class="success-message">
+        ✅ You have successfully registered! You can now login.
+    </div>
+
+    <div th:if="${param.error}" class="error-message">
+        ❌ Incorrect user name or password.
+    </div>
+
+    <div th:if="${param.logout}" class="info-message">
+        ℹ️ You have successfully logged out of the system.
+    </div>
+
+    <form th:action="@{/login}" method="post" class="form">
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username" required placeholder="Enter a name">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter a name">
+        </div>
+        <button type="submit" class="button">Sign in</button>
+    </form>
+
+    <p class="nav-link">Don't have an account yet? <a th:href="@{/register}" class="link">Sign up</a></p>
+    <p class="nav-link"><a th:href="@{/products}" class="link">← Back to products</a></p>
+</div>
+</body>
+</html>
