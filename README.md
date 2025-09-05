@@ -8,6 +8,11 @@
 * [Setup](#setup)
 ---
 ## General info
+This project is a small product store application built with Spring Boot.
+It supports role-based access control:
+- User — can browse the product catalog (view products, see details).
+- Admin — has full management rights (add, update, delete products, manage roles/users).
+The application demonstrates a secure, database-driven system with authentication, authorization, and product management.
 
 ---
 ## Demonstration
