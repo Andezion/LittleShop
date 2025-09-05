@@ -16,11 +16,13 @@ The application demonstrates a secure, database-driven system with authenticatio
 
 ---
 ## Demonstration
-Here we can see what the product list looks like for the administrator, i.e. it is possible to add, delete and edit products.
+Here we can see what the product list looks like for the administrator, i.e. it is possible to add, delete and edit products:
 ![photo1](./photo/photo1.png)
 
-
+This is what the registration page looks like:
 ![photo2](./photo/photo2.png)
+
+
 ![photo3](./photo/photo3.png)
 ![photo4](./photo/photo4.png)
 ---
