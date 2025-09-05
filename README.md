@@ -25,8 +25,9 @@ This is what the registration page looks like:
 Here we can create a new user:
 ![photo3](./photo/photo3.png)
 
-
+And this is how we can create a new product:
 ![photo4](./photo/photo4.png)
+
 ---
 ## Technologies
 Essentials:
