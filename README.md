@@ -22,8 +22,10 @@ Here we can see what the product list looks like for the administrator, i.e. it 
 This is what the registration page looks like:
 ![photo2](./photo/photo2.png)
 
-
+Here we can create a new user:
 ![photo3](./photo/photo3.png)
+
+
 ![photo4](./photo/photo4.png)
 ---
 ## Technologies
