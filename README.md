@@ -7,6 +7,45 @@
 * [Features](#features)
 * [Setup](#setup)
 ---
+## General info
+
+---
+## Demonstration
+
+---
+## Technologies
+Essentials:
+- Spring Boot 3.2.5 – the main framework that simplifies the creation of Java applications.
+- Java 17 – language version.
+- PostgreSQL – DBMS, connection via JDBC driver.
+
+Spring Boot starters:
+- spring-boot-starter-data-jpa – working with a database via JPA/Hibernate.
+- spring-boot-starter-thymeleaf – template engine for web interfaces (HTML).
+- spring-boot-starter-web – creating REST and MVC web applications.
+- spring-boot-starter-security – security, authentication, and authorisation.
+- spring-boot-starter-test – testing (JUnit, Spring Test, Mockito, etc.).
+
+Validation:
+- Jakarta Validation API (3.0.2) – specification for validation.
+- Hibernate Validator (8.0.1.Final) – implementation of Jakarta Validation.
+
+Templates and security:
+- thymeleaf-extras-springsecurity6 – integration of Thymeleaf with Spring Security (e.g., role checking directly in the template).
+
+Utilities:
+- Lombok (1.18.30) – reduction of boilerplate code (getters/setters/builders, etc.).
+
+Build:
+- Maven – build system.
+- maven-compiler-plugin – plugin for Java compilation, with annotation support (Lombok).
+
+---
+## Features
+
+---
+## Setup
+Just install the latest Release :)
 
 ```
  :: Spring Boot ::                (v3.2.5)
